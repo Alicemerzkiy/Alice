@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    double num1, num2;
+    char operation;
+    setlocale(LC_ALL, "RU");
+
+    // Ввод данных
+    cout << "Введите первое число: ";
+    cin >> num1;
+
+    cout << "Введите второе число: ";
+    cin >> num2;
+
+    cout << "Введите оператор (+, -, *, /): ";
+    cin >> operation;
+
+    // Вычисление результата
+    double result;
+    switch (operation) {
+    case '+': result = num1 + num2; break;
+    case '-': result = num1 - num2; break;
+    case '*': result = num1 * num2; break;
+    case '/': result = num1 / num2; break;
+    }
+
+    // Вывод результата
+    cout << "Результат: \n" << result;
+
+    return 0;
+}
