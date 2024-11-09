@@ -4,29 +4,44 @@ using namespace std;
 int main() {
     double num1, num2;
     char operation;
+    char continue_calc;
     setlocale(LC_ALL, "RU");
 
-    // Ввод данных
-    cout << "Введите первое число: ";
-    cin >> num1;
+    do {
+        cout << "Введите первое число: ";
+        cin >> num1;
 
-    cout << "Введите второе число: ";
-    cin >> num2;
+        cout << "Введите второе число: ";
+        cin >> num2;
 
-    cout << "Введите оператор (+, -, *, /): ";
-    cin >> operation;
+        cout << "Введите оператор (+, -, *, /, ^): ";
+        cin >> operation;
 
-    // Вычисление результата
-    double result;
-    switch (operation) {
-    case '+': result = num1 + num2; break;
-    case '-': result = num1 - num2; break;
-    case '*': result = num1 * num2; break;
-    case '/': result = num1 / num2; break;
-    }
+        double result;
+        switch (operation) {
+        case '+': result = num1 + num2; break;
+        case '-': result = num1 - num2; break;
+        case '*': result = num1 * num2; break;
+        case '/':
+            if (num2 == 0) {
+                cout << "Делить на ноль нельзя!\n"; 
+            }
+            else {
+                result = num1 / num2;
+            }
+            break;
+        case '^':
+            result = pow(num1, num2); break;
+        default:
+            cout << "Неверный оператор!\n";
+        }
 
-    // Вывод результата
-    cout << "Результат: \n" << result;
+        cout << "Результат: " << result << endl;
+
+        cout << "Хотите продолжить? (y/n): ";
+        cin >> continue_calc;
+
+    } while (continue_calc == 'y' || continue_calc == 'Y');
 
     return 0;
 }
