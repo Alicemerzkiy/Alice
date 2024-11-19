@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 int main() {
@@ -8,7 +9,6 @@ int main() {
     setlocale(LC_ALL, "RU");
 
     do {
-
         cout << "=============================================\n";
         cout << "                Калькулятор                 \n";
         cout << "=============================================\n";
@@ -23,6 +23,8 @@ int main() {
         cin >> operation;
 
         double result;
+        bool validOperation = true;
+
         switch (operation) {
         case '+': result = num1 + num2; break;
         case '-': result = num1 - num2; break;
@@ -30,7 +32,8 @@ int main() {
         case '/':
             if (num2 == 0) {
                 cout << "Делить на ноль нельзя!\n"; 
-            }
+                validOperation = false;
+            } 
             else {
                 result = num1 / num2;
             }
@@ -39,11 +42,14 @@ int main() {
             result = pow(num1, num2); break;
         default:
             cout << "Неверный оператор!\n";
+            validOperation = false;
         }
 
-        cout << "=============================================\n";
-        cout << "                Результат: " << result << endl;
-        cout << "=============================================\n";
+        if (validOperation) { // Проверяем, была ли операция валидной
+            cout << "=============================================\n";
+            cout << "                Результат: " << result << endl;
+            cout << "=============================================\n";
+        }
 
         cout << "Хотите продолжить? (y/n): ";
         cin >> continue_calc;
@@ -55,3 +61,4 @@ int main() {
     cout << "=============================================\n";
     return 0;
 }
+
